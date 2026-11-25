@@ -35,38 +35,40 @@ input and output format, then compile and test your corrected program.
 */
 
 #include <iostream>
-#include <string>
-#include <stack>
+#include <vector>
+#include <climits>
 using namespace std;
 
 int main() {
-    // Read the complete bracket sequence, including an empty line if given.
-    string sequence;
-    getline(cin, sequence);
+    int n;
+    cin >> n;
 
-    // Match each closing bracket with the most recent opening bracket.
-    stack<char> openings;
-    bool valid = true;
-    for (char current : sequence) {
-        if (current == '(' || current == '[' || current == '{') {
-            openings.push(current);
-        } else {
-            if (openings.empty()) {
-                valid = false;
-                break;
-            }
-            char opening = openings.top();
-            openings.pop();
-            if ((current == ')' && opening != '(') ||
-                (current == ']' && opening != '[') ||
-                (current == '}' && opening != '{')) {
-                valid = false;
-                break;
-            }
+    vector<long long> values(n);
+
+    for (int i = 0; i < n; ++i) {
+        cin >> values[i];
+    }
+
+    long long largest = LLONG_MIN;
+    long long secondLargest = LLONG_MIN;
+
+    for (long long value : values) {
+        if (value > largest) {
+            secondLargest = largest;
+            largest = value;
+        }
+        else if (value < largest && value > secondLargest) {
+            secondLargest = value;
         }
     }
 
-    // Report whether the sequence satisfies the bracket rules.
-    cout << (valid ? "YES" : "NO") << '\n';
+    if (secondLargest == LLONG_MIN) {
+        cout << "NONE\n";
+    }
+    else {
+        cout << secondLargest << '\n';
+    }
+
     return 0;
 }
+

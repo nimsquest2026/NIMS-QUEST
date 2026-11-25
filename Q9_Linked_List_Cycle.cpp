@@ -51,36 +51,43 @@ struct ListNode {
 };
 
 int main() {
-    // Read node values and the index used to connect the tail.
     int n;
     cin >> n;
+
     vector<ListNode> nodes(n);
+
     for (int i = 0; i < n; ++i) {
         cin >> nodes[i].value;
+
         if (i + 1 < n) {
             nodes[i].next = &nodes[i + 1];
         }
     }
+
     int position;
     cin >> position;
-    if (position >= 0) {
+
+    if (position >= 0 && position < n) {
         nodes[n - 1].next = &nodes[position];
     }
 
-    // Inspect the links to determine whether traversal revisits a node.
     ListNode* slow = &nodes[0];
     ListNode* fast = &nodes[0];
+
     bool hasCycle = false;
+
     while (fast != nullptr && fast->next != nullptr) {
         slow = slow->next;
-        fast = fast->next;
+        fast = fast->next->next;
+
         if (slow == fast) {
             hasCycle = true;
             break;
         }
     }
 
-    // Report whether the linked structure contains a cycle.
     cout << (hasCycle ? "YES" : "NO") << '\n';
+
     return 0;
 }
+

@@ -43,26 +43,30 @@ input and output format, then compile and test your corrected program.
 using namespace std;
 
 int main() {
-    // Read the sorted search space and the value to locate.
     int n;
     cin >> n;
+
     vector<int> values(n);
+
     for (int i = 0; i < n; ++i) {
         cin >> values[i];
     }
+
     int target;
     cin >> target;
 
-    // Narrow the candidate interval until the target is found or excluded.
     int left = 0;
-    int right = n - 2;
+    int right = n - 1;
     int answer = -1;
+
     while (left <= right) {
         int middle = left + (right - left) / 2;
+
         if (values[middle] == target) {
             answer = middle;
             break;
         }
+
         if (values[middle] < target) {
             left = middle + 1;
         } else {
@@ -70,7 +74,8 @@ int main() {
         }
     }
 
-    // Report the requested zero-based position or the not-found marker.
     cout << answer << '\n';
+
     return 0;
 }
+

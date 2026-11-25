@@ -41,31 +41,47 @@ input and output format, then compile and test your corrected program.
 using namespace std;
 
 int main() {
-    // Read every value before comparing candidates.
     int n;
     cin >> n;
+
     vector<long long> values(n);
-    for (int i = 0; i < n; ++i) {
+
+    for (int i = 0; i < n; i++) {
         cin >> values[i];
     }
 
-    // Maintain the largest and second-largest candidates while scanning.
     long long largest = LLONG_MIN;
     long long secondLargest = LLONG_MIN;
+
+    bool foundLargest = false;
+    bool foundSecond = false;
+
     for (long long value : values) {
-        if (value > largest) {
-            secondLargest = largest;
+
+        if (!foundLargest || value > largest) {
+            if (foundLargest) {
+                secondLargest = largest;
+                foundSecond = true;
+            }
+
             largest = value;
-        } else if (value > secondLargest) {
+            foundLargest = true;
+        }
+        else if (value < largest &&
+                 (!foundSecond || value > secondLargest)) {
+
             secondLargest = value;
+            foundSecond = true;
         }
     }
 
-    // Print the second distinct candidate when one is available.
-    if (secondLargest == LLONG_MIN) {
-        cout << "NONE\n";
-    } else {
+    if (foundSecond) {
         cout << secondLargest << '\n';
     }
+    else {
+        cout << "NONE\n";
+    }
+
     return 0;
 }
+

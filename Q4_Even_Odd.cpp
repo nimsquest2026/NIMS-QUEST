@@ -35,15 +35,16 @@ input and output format, then compile and test your corrected program.
 using namespace std;
 
 int main() {
-    // Read the integer whose parity is being checked.
     long long number;
     cin >> number;
 
-    // Print the classification for the supplied integer.
     if (number % 2 == 0) {
-        cout << "Odd\n";
-    } else {
         cout << "Even\n";
+    } else {
+        cout << "Odd\n";
     }
+
     return 0;
+}
+
 }

@@ -39,21 +39,25 @@ input and output format, then compile and test your corrected program.
 using namespace std;
 
 int main() {
-    // Read the number of scores and store each score.
     int n;
     cin >> n;
+
+    if (n <= 0) {
+        return 0;
+    }
+
     vector<long long> scores(n);
     for (int i = 0; i < n; ++i) {
         cin >> scores[i];
     }
 
-    // Track the best score found and print it after scanning the list.
-    long long highest = 0;
-    for (int i = 0; i < n; ++i) {
+    long long highest = scores[0];
+    for (int i = 1; i < n; ++i) {
         if (scores[i] > highest) {
             highest = scores[i];
         }
     }
+
     cout << highest << '\n';
     return 0;
 }

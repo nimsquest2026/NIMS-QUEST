@@ -73,7 +73,7 @@ int main() {
     bool hasCycle = false;
     while (fast != nullptr && fast->next != nullptr) {
         slow = slow->next;
-        fast = fast->next;
+        fast = fast->next->next;
         if (slow == fast) {
             hasCycle = true;
             break;

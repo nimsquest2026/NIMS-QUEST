@@ -63,7 +63,7 @@ int main() {
     }
     int position;
     cin >> position;
-    if (position >= 0) {
+    if (position >= 0 && position < n) {
         nodes[n - 1].next = &nodes[position];
     }
 
@@ -73,14 +73,14 @@ int main() {
     bool hasCycle = false;
     while (fast != nullptr && fast->next != nullptr) {
         slow = slow->next;
-        fast = fast->next;
+        fast = fast->next->next;
         if (slow == fast) {
             hasCycle = true;
             break;
         }
     }
 
-    // Report whether the linked structure contains a cycle.
+    // Report whether the linked structure contains a cycl
     cout << (hasCycle ? "YES" : "NO") << '\n';
     return 0;
 }

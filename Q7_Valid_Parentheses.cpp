@@ -65,6 +65,9 @@ int main() {
             }
         }
     }
+    if (!openings.empty()) {
+        valid = false;
+    }
 
     // Report whether the sequence satisfies the bracket rules.
     cout << (valid ? "YES" : "NO") << '\n';

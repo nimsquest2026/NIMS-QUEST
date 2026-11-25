@@ -48,8 +48,8 @@ int main() {
     }
 
     // Track the best score found and print it after scanning the list.
-    long long highest = 0;
-    for (int i = 0; i < n; ++i) {
+    long long highest = scores[0];
+    for (int i = 1; i < n; ++i) {
         if (scores[i] > highest) {
             highest = scores[i];
         }

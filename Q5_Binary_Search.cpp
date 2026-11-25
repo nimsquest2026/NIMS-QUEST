@@ -55,7 +55,7 @@ int main() {
 
     // Narrow the candidate interval until the target is found or excluded.
     int left = 0;
-    int right = n - 2;
+    int right = n - 1;
     int answer = -1;
     while (left <= right) {
         int middle = left + (right - left) / 2;

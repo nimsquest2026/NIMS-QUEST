@@ -37,6 +37,7 @@ input and output format, then compile and test your corrected program.
 #include <iostream>
 #include <vector>
 using namespace std;
+include <climits>
 
 int main() {
     // Read the number of scores and store each score.
@@ -48,7 +49,7 @@ int main() {
     }
 
     // Track the best score found and print it after scanning the list.
-    long long highest = 0;
+    long long highest = INT_MIN;
     for (int i = 0; i < n; ++i) {
         if (scores[i] > highest) {
             highest = scores[i];

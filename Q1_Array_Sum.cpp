@@ -34,24 +34,29 @@ Find and fix the bugs in this program. Preserve the problem's required
 input and output format, then compile and test your corrected program.
 */
 
-#include <iostream>
+
+    #include <iostream>
 #include <vector>
 using namespace std;
 
 int main() {
-    // Read the array size and the values supplied for this question.
     int n;
     cin >> n;
+
     vector<int> values(n);
+
     for (int i = 0; i < n; ++i) {
         cin >> values[i];
     }
 
-    // Accumulate the array values and report the total.
     long long sum = 0;
-    for (int i = 0; i < n - 1; ++i) {
+
+    for (int i = 0; i < n; ++i) {
         sum += values[i];
     }
+
     cout << sum << '\n';
+
     return 0;
 }
+

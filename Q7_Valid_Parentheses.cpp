@@ -40,13 +40,12 @@ input and output format, then compile and test your corrected program.
 using namespace std;
 
 int main() {
-    // Read the complete bracket sequence, including an empty line if given.
     string sequence;
     getline(cin, sequence);
 
-    // Match each closing bracket with the most recent opening bracket.
     stack<char> openings;
     bool valid = true;
+
     for (char current : sequence) {
         if (current == '(' || current == '[' || current == '{') {
             openings.push(current);
@@ -55,8 +54,10 @@ int main() {
                 valid = false;
                 break;
             }
+
             char opening = openings.top();
             openings.pop();
+
             if ((current == ')' && opening != '(') ||
                 (current == ']' && opening != '[') ||
                 (current == '}' && opening != '{')) {
@@ -66,7 +67,11 @@ int main() {
         }
     }
 
-    // Report whether the sequence satisfies the bracket rules.
+    if (!openings.empty()) {
+        valid = false;
+    }
+
     cout << (valid ? "YES" : "NO") << '\n';
+
     return 0;
 }

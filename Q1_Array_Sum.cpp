@@ -49,7 +49,7 @@ int main() {
 
     // Accumulate the array values and report the total.
     long long sum = 0;
-    for (int i = 0; i < n - 1; ++i) {
+    for (int i = 0; i < n; ++i) {
         sum += values[i];
     }
     cout << sum << '\n';

@@ -42,7 +42,7 @@ int main() {
     getline(cin, message);
 
     // Emit the message characters in reverse order.
-    for (int i = static_cast<int>(message.size()) - 1; i > 0; --i) {
+    for (int i = static_cast<int>(message.size()) - 1; i >= 0; --i) {
         cout << message[i];
     }
     cout << '\n';

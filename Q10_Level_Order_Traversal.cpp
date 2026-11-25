@@ -70,6 +70,9 @@ int main() {
             if (left < n) {
                 pending.push(left);
             }
+            if (right < n) {
+                pending.push(right);
+            }
         }
 
         // Print the values for the current level.

@@ -56,7 +56,7 @@ int main() {
         if (value > largest) {
             secondLargest = largest;
             largest = value;
-        } else if (value > secondLargest) {
+        } else if (value < largest && value > secondLargest) {
             secondLargest = value;
         }
     }

@@ -41,9 +41,9 @@ int main() {
 
     // Print the classification for the supplied integer.
     if (number % 2 == 0) {
-        cout << "Odd\n";
+        cout << "even\n";
     } else {
-        cout << "Even\n";
+        cout << "odd\n";
     }
     return 0;
 }

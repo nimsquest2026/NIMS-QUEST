@@ -65,7 +65,7 @@ int main() {
     }
 
     // Append any values that remain after one sequence is exhausted.
-    for (; i < n - 1; ++i) {
+    for (; i < n; ++i) {
         merged.push_back(first[i]);
     }
     for (; j < m; ++j) {
